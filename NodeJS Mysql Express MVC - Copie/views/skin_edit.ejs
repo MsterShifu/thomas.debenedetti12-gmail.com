@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container"><a class="skinfarmers" href="/">SKIN FARMERS</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li role="presentation"><a class="navboutonergo" href="/add">Ajouter un skin</a></li>
+                    <li role="presentation"><a class="navbouton" href="#">Fonctionnement</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav></br>
+<div class="container">
+  <h2 class="titreadd">Vous voulez modifier une info relative à un skin en vente ? Vous êtes au bon endroit!</h2>
+  <form action="/update" method="post">
+    <input type="hidden" value="<%= user.id %>" name="id">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter Name" value="<%= user.name %>" name="name" required>
+    </div>    
+    <div class="form-group">
+        <label for="jeu"> Jeu</label>
+        <input type="jeu" class="form-control" id="jeu" placeholder="Enter jeu" value="<%= user.jeu %>" name="jeu" required>
+    </div>
+    <div class="form-group">
+        <label for="prix">Prix</label>
+        <input type="text" class="form-control" id="pwd" placeholder="Enter Phone" value="<%= user.prix %>" name="prix" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</br></br></br></br></br>
+<div class="footerr">
+    <footer>
+        <ul class="boutonfooter">
+            <li class="bouton"><a href="#">Acceuil</a></li>
+            <li class="bouton"><a href="#">Services</a></li>
+            <li class="bouton"><a href="#">A propos</a></li>
+            <li class="bouton"><a href="#">Informations légales</a></li>
+        </ul>
+    </br>
+        <p class="copyright">Skins FARMERS @ 2020</p>
+    </footer>
+</div>
+</body>
+</html>

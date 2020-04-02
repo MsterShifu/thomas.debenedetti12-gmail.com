@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+    function Recherche() {
+      
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("Larecherche");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("Lesskins");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container"><a class="skinfarmers" href="/">SKIN FARMERS</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li role="presentation"><a class="navboutonergo" href="/add">Ajouter un skin</a></li>
+                    <li role="presentation"><a class="navbouton" href="#">Fonctionnement</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav></br>
+<div class="intro">
+</br>
+<input type="text" id="Larecherche" onkeyup="Recherche()" placeholder="Recherchez un skin...">
+<!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."> barre de recherche--> 
+</br></br>
+<p>Voici les skins actuellement en vente</p>
+</div>
+<div class="container" id="Lesskins">
+ <!--h2><%= title %></h2>-->
+</br></br>
+  <a href="/add" class="btn btn-sm btn-primary">Mettre en vente un skin</a><br/>
+  <table id="Lesskins2" class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Nom du skin</th>
+        <th>Jeu concerné</th>
+        <th>Prix (euros)</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% users.forEach(function(user){ %>
+            <tr>
+                <td><%= user.name %></td>
+                <td><%= user.jeu %></td>
+                <td><%= user.prix %></td>
+                <td>
+                    <a href="get/<%= user.id %>" class="btn btn-sm btn-primary">Voir</a>
+                    <a href="edit/<%= user.id %>" class="btn btn-sm btn-primary">Modifier</a>
+                    <a href="delete/<%= user.id %>" class="btn btn-sm btn-danger">Acheter</a> <!-- pour l'instant ça supprime-->
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</div>
+</br>
+<div class="footerr">
+    <footer>
+        <ul class="boutonfooter">
+            <li class="bouton"><a href="#">Acceuil</a></li>
+            <li class="bouton"><a href="#">Services</a></li>
+            <li class="bouton"><a href="#">A propos</a></li>
+            <li class="bouton"><a href="#">Informations légales</a></li>
+        </ul>
+    </br>
+        <p class="copyright">Skins FARMERS @ 2020</p>
+    </footer>
+</div>
+ 
+</body>
+</html>
